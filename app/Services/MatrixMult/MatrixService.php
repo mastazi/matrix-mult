@@ -2,8 +2,24 @@
 
 namespace App\Services;
 
+/**
+ * MatrixService is a service that exposes methods that
+ * execute matrix multiplication on two operands, and
+ * methods that validate the operands beforehand.
+ * The operands must be 2-dimensional arrays.
+ * Even a 1xn matrix (single row) will be represented by
+ * a 2-dimensional array of length = 1. This will facilitate
+ * the multiplication.
+ */
 class MatrixService implements MatrixServiceInterface
 {
+    /**
+     * multiply will take 2 arrays and do matrix multiplication.
+     *
+     * @param  mixed $matrix_a
+     * @param  mixed $matrix_b
+     * @return array
+     */
     public static function multiply(array $matrix_a, array $matrix_b): array
     {
         if (!self::canMultiply($matrix_a, $matrix_b)) {
@@ -78,20 +94,25 @@ class MatrixService implements MatrixServiceInterface
     }
     /**
      * canMultiply checks if the 2 arrays are matrices,
-     * and if they can be multiplied (height of A = width of B and vice versa)
+     * and if they can be multiplied (height of A = width of B)
      *
      * @param  array $matrix_a
      * @param  array $matrix_b
      * @return bool
      */
-    private function canMultiply(array $matrix_a, array $matrix_b): bool
+    public static function canMultiply(array $matrix_a, array $matrix_b): bool
     {
-        if (!(self::isMatrix($matrix_a) && self::isMatrix($matrix_b))) {
+        if (!(self::isMatrix($matrix_b) && self::isMatrix($matrix_b))) {
             return false;
         }
-        if (!(self::rowLength($matrix_b == count($matrix_a)))) {
+        if (!(count($matrix_a) == self::rowLength($matrix_b))) {
             return false;
         }
         return true;
+    }
+    private static function convertToLetters(int $value): string
+    {
+        // ASCII A-Z is 65-90
+        return '';
     }
 }
