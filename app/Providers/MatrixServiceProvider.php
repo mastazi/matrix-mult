@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Services\MatrixMult\MatrixServiceInterface;
-use App\Services\MatrixMult\MatrixService;
+use App\Services\MatrixService\MatrixServiceInterface;
+use App\Services\MatrixService\MatrixService;
 
 class MatrixServiceProvider extends ServiceProvider
 {

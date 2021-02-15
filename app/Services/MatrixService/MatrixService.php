@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Services;
+declare(strict_types=1);
+
+namespace App\Services\MatrixService;
 
 /**
  * MatrixService is a service that exposes methods that
