@@ -15,6 +15,15 @@ namespace App\Services\MatrixService;
  */
 class MatrixService implements MatrixServiceInterface
 {
+    private array $matrix_a;
+    private array $matrix_b;
+
+    public function __construct(array $matrix_a = array(), array $matrix_b = array())
+    {
+        parent::__construct();
+        $this->matrix_a = $matrix_a;
+        $this->matrix_b = $matrix_b;
+    }
     /**
      * multiply will take 2 arrays and do matrix multiplication.
      *
@@ -28,7 +37,7 @@ class MatrixService implements MatrixServiceInterface
             // @todo log
             return [];
         } else {
-            // @todo multiplication
+            throw new Exception('The matrices can\'t be multiplied due to their shape');
         }
     }
     /**
