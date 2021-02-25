@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Services\MatrixService;
 
 /**
- * MatrixService is a service that exposes methods that
- * execute matrix multiplication on two operands, and
+ * MatrixService is a utility class service that exposes methods
+ * which execute matrix multiplication on two operands, and
  * methods that validate the operands beforehand.
  * The operands must be 2-dimensional arrays.
  * Even a 1xn matrix (single row) will be represented by
@@ -15,15 +15,6 @@ namespace App\Services\MatrixService;
  */
 class MatrixService implements MatrixServiceInterface
 {
-    private array $matrix_a;
-    private array $matrix_b;
-
-    public function __construct(array $matrix_a = array(), array $matrix_b = array())
-    {
-        parent::__construct();
-        $this->matrix_a = $matrix_a;
-        $this->matrix_b = $matrix_b;
-    }
     /**
      * multiply will take 2 arrays and do matrix multiplication.
      *

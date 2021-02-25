@@ -15,12 +15,7 @@ class MatrixServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $request = $this->app->request;
-        $validated = $request->validate([
-            'matrix_a' => 'required|array',
-            'matrix_b' => 'required|array',
-        ]);
-        $this->app->bind(MatrixServiceInterface::class, new MatrixService($request->matrix_a, $request->matrix_b));
+        $this->app->bind(MatrixServiceInterface::class, MatrixService::class);
     }
 
     /**
