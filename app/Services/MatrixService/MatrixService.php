@@ -108,7 +108,7 @@ class MatrixService implements MatrixServiceInterface
         if (!(self::isMatrix($matrix_b) && self::isMatrix($matrix_b))) {
             return false;
         }
-        if (!self::rowLength($matrix_a) == (count($matrix_b))) {
+        if (self::rowLength($matrix_a) != (count($matrix_b))) {
             return false;
         }
 
