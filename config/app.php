@@ -175,6 +175,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Matrix Multiplier Service...
+         */
+        App\Providers\MatrixServiceProvider::class,
+
     ],
 
     /*

@@ -40,7 +40,7 @@ class MatrixService implements MatrixServiceInterface
      */
     public static function isMatrix(array $matrix): bool
     {
-        if (isRectangular($matrix)) {
+        if (self::isRectangular($matrix)) {
             return true;
         }
         return false;
@@ -54,7 +54,7 @@ class MatrixService implements MatrixServiceInterface
      */
     private static function isRectangular(array $matrix): bool
     {
-        if (self::is2D($matrix)) {
+        if (!self::is2D($matrix)) {
             return false;
         }
         $length = null;
@@ -96,7 +96,8 @@ class MatrixService implements MatrixServiceInterface
     }
     /**
      * canMultiply checks if the 2 arrays are matrices,
-     * and if they can be multiplied (height of A = width of B)
+     * and if they can be multiplied (width of A = height of B)
+     * note that the opposite (height of A = width of B) is not required.
      *
      * @param  array $matrix_a
      * @param  array $matrix_b
@@ -107,9 +108,10 @@ class MatrixService implements MatrixServiceInterface
         if (!(self::isMatrix($matrix_b) && self::isMatrix($matrix_b))) {
             return false;
         }
-        if (!(count($matrix_a) == self::rowLength($matrix_b))) {
+        if (!self::rowLength($matrix_a) == (count($matrix_b))) {
             return false;
         }
+
         return true;
     }
     private static function convertToLetters(int $value): string
