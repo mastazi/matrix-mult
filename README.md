@@ -10,3 +10,9 @@
 
 (On Windows, use the WSL2 console to clone and start the app, [see here](https://laravel.com/docs/8.x/installation#getting-started-on-windows))
 
+## run the unit tests
+run the following command
+```
+php artisan test
+```
+
