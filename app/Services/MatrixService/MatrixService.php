@@ -25,10 +25,19 @@ class MatrixService implements MatrixServiceInterface
     public static function multiply(array $matrix_a, array $matrix_b): array
     {
         if (!self::canMultiply($matrix_a, $matrix_b)) {
-            // @todo log
-            return [];
-        } else {
             throw new Exception('The matrices can\'t be multiplied due to their shape');
+        } else {
+            $result = array();
+            for ($rowA = 0; $rowA < count($matrix_a); $rowA++) {
+                for ($colB = 0; $colB < self::rowLength($matrix_b); $colB++) {
+                    $dotProduct = 0;
+                    for ($i = 0; $i < self::rowLength($matrix_a); $i++) {
+                        $dotProduct += ($matrix_a[$rowA][$i] * $matrix_b[$i][$colB]);
+                    }
+                    $result[$rowA][$colB] = $dotProduct;
+                }
+            }
+            return $result;
         }
     }
     /**

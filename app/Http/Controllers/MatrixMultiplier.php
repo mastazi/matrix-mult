@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Services\Api\ApiStructureTrait;
@@ -39,15 +41,14 @@ class MatrixMultiplier extends Controller
         }
 
 
-        // $result = $operands->multiply($matrix_a, $matrix_b);
-        $result = array(array(1,2,3), array(4,5,6));
+        $result = $matrix->multiply($matrix_a, $matrix_b);
 
-        // return $this->sendSuccess(
-        //     [
-        //         'data' => $result
-        //     ],
-        //     200
-        // );
-        return json_encode("hi there");
+        return $this->sendSuccess(
+            [
+                'data' => $result
+            ],
+            200
+        );
+        //return json_encode("hi there");
     }
 }
